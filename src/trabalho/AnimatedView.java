@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @author David J. Barnes and Michael Kolling
  * @version 2002-04-23
  */
-public class SimulatorView extends JFrame {
+public class AnimatedView extends JFrame implements SimulatorViewNew{
 
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
@@ -35,7 +35,7 @@ public class SimulatorView extends JFrame {
     /**
      * Create a view of the given width and height.
      */
-    public SimulatorView(int height, int width) {
+    public AnimatedView(int height, int width) {
         stats = new FieldStats();
         colors = new HashMap();
 
@@ -93,7 +93,7 @@ public class SimulatorView extends JFrame {
 
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
-                Object animal = field.getObjectAt(row, col);
+                Actor animal = field.getObjectAt(row, col);
                 if (animal != null) {
                     stats.incrementCount(animal.getClass());
                     fieldView.drawMark(col, row, getColor(animal.getClass()));

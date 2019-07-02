@@ -35,7 +35,7 @@ public class Simulator {
     // The current step of the simulation.
     private int step;
     // A graphical view of the simulation.
-    private SimulatorView view;
+    private AnimatedView view;
     //metodo a parte 
     private PopulateGeneration population;
 
@@ -66,7 +66,7 @@ public class Simulator {
         population = new PopulateGeneration();
 
         // Create a view of the state of each location in the field.
-        view = new SimulatorView(depth, width);
+        view = new AnimatedView(depth, width);
         view.setColor(Fox.class, Color.blue);
         view.setColor(Rabbit.class, Color.orange);
 

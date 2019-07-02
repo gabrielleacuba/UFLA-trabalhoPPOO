@@ -29,7 +29,7 @@ public class Fox extends Animal {
 
     // Individual characteristics (instance fields).
     // The fox's age.
-    private int age;
+    
     private int foodLevel;
 
     /**
@@ -39,6 +39,7 @@ public class Fox extends Animal {
      * @param randomAge If true, the fox will have random age and hunger level.
      */
     public Fox(boolean randomAge) {
+    	super(randomAge);
         setAlive(true);
         if (randomAge) {
             randomAge(randomAge);
@@ -58,15 +59,7 @@ public class Fox extends Animal {
         incrementAge();
         incrementHunger();
         if (isAlive()) {
-            // New foxes are born into adjacent locations.
-            int births = breed();
-            for (int b = 0; b < births; b++) {
-                Fox newFox = new Fox(false);
-                newFoxes.add(newFox);
-                Location loc = updatedField.randomAdjacentLocation(getLocation());
-                newFox.setLocation(loc);
-                updatedField.place(newFox, loc);
-            }
+            giveBirth(newFoxes,updatedField);
             // Move towards the source of food if found.
             Location newLocation = findFood(currentField, getLocation());
             if (newLocation == null) {  // no food found - move randomly
@@ -104,9 +97,9 @@ public class Fox extends Animal {
                 = field.adjacentLocations(location);
         while (adjacentLocations.hasNext()) {
             Location where = (Location) adjacentLocations.next();
-            Object animal = field.getObjectAt(where);
-            if (animal instanceof Rabbit) {
-                Rabbit rabbit = (Rabbit) animal;
+            Actor actors = field.getObjectAt(where);
+            if (actors instanceof Rabbit) {
+                Rabbit rabbit = (Rabbit) actors;
                 if (rabbit.isAlive()) {
                     rabbit.setEaten();
                     foodLevel = RABBIT_FOOD_VALUE;
@@ -142,7 +135,12 @@ public class Fox extends Animal {
     protected int getMaxLitter() {
         return MAX_LITTER_SIZE;
     }
-
+    
+    @Override
+    protected Animal getAnimal(boolean exists) {
+        Fox fox = new Fox(false);
+        return fox;
+    }
     
 }
 

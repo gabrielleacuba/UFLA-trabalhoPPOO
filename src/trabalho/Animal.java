@@ -14,7 +14,10 @@ public abstract class Animal implements Actor{
     
     private static final Random rand = new Random();
 
-    
+    public Animal (boolean exists) {
+    	age = 0;
+    	alive = exists;
+    }
     /**
      * Verifica se o animal está vivo ou não     *
      * @return True se o animal estiver vivo.
@@ -79,10 +82,21 @@ public abstract class Animal implements Actor{
         }
     }
 
-    
-    abstract public void act (Field field, Field updatedField,List<Actor> actors);
+    public void giveBirth(List<Actor> newAnimals, Field updatedField) {
+    	// New foxes are born into adjacent locations.
+        int births = breed();
+        for (int b = 0; b < births; b++) {
+            Animal newAnimal =  getAnimal(false);
+            
+            newAnimals.add(newAnimal);
+            Location loc = updatedField.randomAdjacentLocation(getLocation());
+            newAnimal.setLocation(loc);
+            updatedField.place(newAnimal, loc);
+        }
+    }
     abstract protected int getBreedingAge();
     abstract protected int getMaxAge();
     abstract protected int getMaxLitter();
     abstract protected double getBreedingProb();
+    abstract protected Animal getAnimal(boolean exists);
 }
