@@ -19,13 +19,10 @@ public class Simulator {
     // The private static final variables represent 
     // configuration information for the simulation.
     // The default width for the grid.
-    private static final int DEFAULT_WIDTH = 500;
+    private static final int DEFAULT_WIDTH = 50;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 250;
-    // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.02;
-    // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.09;
+    private static final int DEFAULT_DEPTH = 50;
+    
 
     // The list of animals in the field
     private List<Actor> animals;
@@ -39,6 +36,8 @@ public class Simulator {
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
+    //metodo a parte 
+    private PopulateGeneration population;
 
     /**
      * Construct a simulation field with default size.
@@ -64,6 +63,7 @@ public class Simulator {
         newAnimals = new ArrayList<>();
         field = new Field(depth, width);
         updatedField = new Field(depth, width);
+        population = new PopulateGeneration();
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
@@ -80,7 +80,7 @@ public class Simulator {
      * e.g. 500 steps.
      */
     public void runLongSimulation() {
-        simulate(1000);
+        simulate(100);
     }
 
     /**
@@ -90,6 +90,7 @@ public class Simulator {
     public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
+            try {Thread.sleep(200);}catch(Exception erro) {}
         }
     }
 
@@ -135,34 +136,10 @@ public class Simulator {
         animals.clear();
         field.clear();
         updatedField.clear();
-        populate(field);
+        population.populate(field,animals);
 
         // Show the starting state in the view.
         view.showStatus(step, field);
     }
 
-    /**
-     * Populate the field with foxes and rabbits.
-     */
-    private void populate(Field field) {
-        Random rand = new Random();
-        field.clear();
-        for (int row = 0; row < field.getDepth(); row++) {
-            for (int col = 0; col < field.getWidth(); col++) {
-                if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Fox fox = new Fox(true);
-                    animals.add(fox);
-                    fox.setLocation(row, col);
-                    field.place(fox, row, col);
-                } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Rabbit rabbit = new Rabbit(true);
-                    animals.add(rabbit);
-                    rabbit.setLocation(row, col);
-                    field.place(rabbit, row, col);
-                }
-                // else leave the location empty.
-            }
-        }
-        Collections.shuffle(animals);
-    }
-}
+ }
