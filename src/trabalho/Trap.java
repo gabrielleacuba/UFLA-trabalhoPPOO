@@ -15,7 +15,7 @@ public class Trap implements Actor {
 
     private boolean alive;
 
-    public boolean isAlive() {
+    public boolean isExists() {
         return alive;
     }
     

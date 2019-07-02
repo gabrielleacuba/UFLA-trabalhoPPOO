@@ -107,7 +107,7 @@ public class Simulator {
             Actor animal = iter.next();
             animal.act(field, updatedField,newAnimals);
             
-            if(!animal.isAlive() ){
+            if(!animal.isExists() ){
                 iter.remove();
               
                 

@@ -29,8 +29,8 @@ public class Rabbit extends Animal {
      *
      * @param randomAge If true, the rabbit will have a random age.
      */
-    public Rabbit(boolean randomAge) {
-    	super(randomAge);
+    public Rabbit(boolean randomAge, Field field, Location location) {
+    	super(randomAge,field,location);
         setAlive(true);
         randomAge(randomAge);
     }
@@ -43,7 +43,7 @@ public class Rabbit extends Animal {
     public void act(Field field, Field updatedField, List<Actor> newRabbits) {
         incrementAge();
 
-        if (isAlive()) {
+        if (isExists()) {
             giveBirth(newRabbits, updatedField);
             Location newLocation = updatedField.freeAdjacentLocation(getLocation());
 
@@ -87,7 +87,7 @@ public class Rabbit extends Animal {
     
     @Override
     protected Animal getAnimal(boolean exists) {
-        Rabbit rabbit = new Rabbit(false);
+        Rabbit rabbit = new Rabbit(false,getField(),getLocation());
         return rabbit;
     }
 

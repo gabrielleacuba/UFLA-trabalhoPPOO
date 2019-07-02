@@ -38,8 +38,8 @@ public class Fox extends Animal {
      *
      * @param randomAge If true, the fox will have random age and hunger level.
      */
-    public Fox(boolean randomAge) {
-    	super(randomAge);
+    public Fox(boolean randomAge, Field field, Location location) {
+    	super(randomAge,field,location);
         setAlive(true);
         if (randomAge) {
             randomAge(randomAge);
@@ -58,7 +58,7 @@ public class Fox extends Animal {
     public void act(Field currentField, Field updatedField, List<Actor> newFoxes) {
         incrementAge();
         incrementHunger();
-        if (isAlive()) {
+        if (isExists()) {
             giveBirth(newFoxes,updatedField);
             // Move towards the source of food if found.
             Location newLocation = findFood(currentField, getLocation());
@@ -100,7 +100,7 @@ public class Fox extends Animal {
             Actor actors = field.getObjectAt(where);
             if (actors instanceof Rabbit) {
                 Rabbit rabbit = (Rabbit) actors;
-                if (rabbit.isAlive()) {
+                if (rabbit.isExists()) {
                     rabbit.setEaten();
                     foodLevel = RABBIT_FOOD_VALUE;
                     return where;
@@ -138,7 +138,7 @@ public class Fox extends Animal {
     
     @Override
     protected Animal getAnimal(boolean exists) {
-        Fox fox = new Fox(false);
+        Fox fox = new Fox(false,getField(),getLocation());
         return fox;
     }
     

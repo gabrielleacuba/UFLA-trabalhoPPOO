@@ -6,23 +6,26 @@ import java.util.Random;
 
 
 public abstract class Animal implements Actor{
-    // Animal vido ou não.
+    // Animal vivo ou não.
     private boolean alive;
     // Posição do animal
+    private Field field;
     private Location location;
     private int age;
     
     private static final Random rand = new Random();
 
-    public Animal (boolean exists) {
+    public Animal (boolean exists, Field field, Location location) {
     	age = 0;
     	alive = exists;
+    	this.field = field;
+    	this.location = location;
     }
     /**
      * Verifica se o animal está vivo ou não     *
      * @return True se o animal estiver vivo.
      */
-    public boolean isAlive() {
+    public boolean isExists() {
         return alive;
     }
 
@@ -48,6 +51,9 @@ public abstract class Animal implements Actor{
         return location;
     }
     
+    public Field getField() {
+    	return field;
+    }
     //Determina se o animal está vivo ou não
     public void setAlive(boolean alive){
         this.alive = alive;

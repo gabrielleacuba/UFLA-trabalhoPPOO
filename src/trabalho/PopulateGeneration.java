@@ -19,13 +19,14 @@ public class PopulateGeneration {
         field.clear();
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
+            	Location loc = new Location(row, col);
                 if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Fox fox = new Fox(true);
+                    Fox fox = new Fox(true,field,loc);
                     actor.add(fox);
                     fox.setLocation(row, col);
                     field.place(fox, row, col);
                 } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Rabbit rabbit = new Rabbit(true);
+                    Rabbit rabbit = new Rabbit(true,field,loc);
                     actor.add(rabbit);
                     rabbit.setLocation(row, col);
                     field.place(rabbit, row, col);
