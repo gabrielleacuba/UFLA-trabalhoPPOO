@@ -55,13 +55,14 @@ public class Fox extends Animal {
      * process, it might breed, die of hunger, or die of old age.
      */
     @Override
-    public void act(Field currentField, Field updatedField, List<Actor> newFoxes) {
+    public void act(Field updatedField, List<Actor> newFoxes) {
         incrementAge();
         incrementHunger();
+        Field field = getField();
         if (isExists()) {
             giveBirth(newFoxes);
             // Move towards the source of food if found.
-            Location newLocation = findFood(currentField, getLocation());
+            Location newLocation = findFood(field, getLocation());
             
             if (newLocation == null) {  // no food found - move randomly
                 newLocation = updatedField.freeAdjacentLocation(getLocation());

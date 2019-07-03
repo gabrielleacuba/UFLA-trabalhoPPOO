@@ -80,7 +80,7 @@ public class Simulator {
      * e.g. 500 steps.
      */
     public void runLongSimulation() {
-        simulate(100);
+        simulate(1000);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Simulator {
     public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            try {Thread.sleep(200);}catch(Exception erro) {}
+            try {Thread.sleep(10);}catch(Exception erro) {}
         }
     }
 
@@ -105,7 +105,7 @@ public class Simulator {
         // let all animals act
         for (Iterator<Actor> iter = animals.iterator(); iter.hasNext();) {
             Actor animal = iter.next();
-            animal.act(field, updatedField,newAnimals);
+            animal.act(updatedField,newAnimals);
             
             if(!animal.isExists() ){
                 iter.remove();

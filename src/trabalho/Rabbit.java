@@ -40,7 +40,7 @@ public class Rabbit extends Animal {
      * it will breed or die of old age.
      */
     @Override
-    public void act(Field field, Field updatedField, List<Actor> newRabbits) {
+    public void act(Field updatedField, List<Actor> newRabbits) {
         incrementAge();
 
         if (isExists()) {

@@ -24,7 +24,7 @@ public class Trap implements Actor {
     }
 
     @Override
-    public void act(Field field, Field updatedField,List<Actor> actors) {
+    public void act(Field updatedField,List<Actor> actors) {
 
     }
 
