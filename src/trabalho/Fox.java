@@ -59,9 +59,10 @@ public class Fox extends Animal {
         incrementAge();
         incrementHunger();
         if (isExists()) {
-            giveBirth(newFoxes,updatedField);
+            giveBirth(newFoxes);
             // Move towards the source of food if found.
             Location newLocation = findFood(currentField, getLocation());
+            
             if (newLocation == null) {  // no food found - move randomly
                 newLocation = updatedField.freeAdjacentLocation(getLocation());
             }
@@ -93,10 +94,10 @@ public class Fox extends Animal {
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood(Field field, Location location) {
-        Iterator adjacentLocations
-                = field.adjacentLocations(location);
-        while (adjacentLocations.hasNext()) {
-            Location where = (Location) adjacentLocations.next();
+    	List<Location> adjacent = field.adjacentLocations(location);
+        Iterator<Location> it= adjacent.iterator();
+        while (it.hasNext()) {
+            Location where = (Location) it.next();
             Actor actors = field.getObjectAt(where);
             if (actors instanceof Rabbit) {
                 Rabbit rabbit = (Rabbit) actors;

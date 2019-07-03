@@ -44,7 +44,7 @@ public class Rabbit extends Animal {
         incrementAge();
 
         if (isExists()) {
-            giveBirth(newRabbits, updatedField);
+            giveBirth(newRabbits);
             Location newLocation = updatedField.freeAdjacentLocation(getLocation());
 
             // Only transfer to the updated field if there was a free location

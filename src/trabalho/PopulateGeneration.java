@@ -20,6 +20,7 @@ public class PopulateGeneration {
         for (int row = 0; row < field.getDepth(); row++) {
             for (int col = 0; col < field.getWidth(); col++) {
             	Location loc = new Location(row, col);
+            	
                 if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Fox fox = new Fox(true,field,loc);
                     actor.add(fox);

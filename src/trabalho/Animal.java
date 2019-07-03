@@ -88,16 +88,15 @@ public abstract class Animal implements Actor{
         }
     }
 
-    public void giveBirth(List<Actor> newAnimals, Field updatedField) {
+    public void giveBirth(List<Actor> newAnimals) {
     	// New foxes are born into adjacent locations.
+    	List<Location> free = field.getFreeAdjacentLocations(getLocation());
         int births = breed();
-        for (int b = 0; b < births; b++) {
+        for (int b = 0; b < births && free.size()> 0; b++) {
+        	Location loc = free.remove(0);
             Animal newAnimal =  getAnimal(false);
-            
             newAnimals.add(newAnimal);
-            Location loc = updatedField.randomAdjacentLocation(getLocation());
-            newAnimal.setLocation(loc);
-            updatedField.place(newAnimal, loc);
+
         }
     }
     abstract protected int getBreedingAge();
