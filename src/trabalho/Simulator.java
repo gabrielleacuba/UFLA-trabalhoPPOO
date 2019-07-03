@@ -67,8 +67,9 @@ public class Simulator {
 
         // Create a view of the state of each location in the field.
         view = new AnimatedView(depth, width);
-        view.setColor(Fox.class, Color.blue);
-        view.setColor(Rabbit.class, Color.orange);
+        view.setColor(Fox.class, Color.green);
+        view.setColor(Rabbit.class, Color.yellow);
+        view.setColor(Coyote.class, Color.red);
 
         // Setup a valid starting point.
         reset();
@@ -80,7 +81,7 @@ public class Simulator {
      * e.g. 500 steps.
      */
     public void runLongSimulation() {
-        simulate(1000);
+        simulate(100);
     }
 
     /**
@@ -90,7 +91,7 @@ public class Simulator {
     public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            try {Thread.sleep(10);}catch(Exception erro) {}
+            try {Thread.sleep(200);}catch(Exception erro) {}
         }
     }
 

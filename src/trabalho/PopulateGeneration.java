@@ -7,9 +7,11 @@ import java.util.Random;
 public class PopulateGeneration {
 	
 	// The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.02;
+    private static final double FOX_CREATION_PROBABILITY = 0.05;
     // The probability that a rabbit will be created in any given grid position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.09;
+    // The probability that a rabbit will be created in any given grid position.
+    private static final double COYOTE_CREATION_PROBABILITY = 0.01;
     
 	/**
      * Populate the field with foxes and rabbits.
@@ -24,14 +26,17 @@ public class PopulateGeneration {
                 if (rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Fox fox = new Fox(true,field,loc);
                     actor.add(fox);
-                    fox.setLocation(row, col);
                     field.place(fox, row, col);
                 } else if (rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
                     Rabbit rabbit = new Rabbit(true,field,loc);
                     actor.add(rabbit);
-                    rabbit.setLocation(row, col);
                     field.place(rabbit, row, col);
                 }
+	            else if (rand.nextDouble() <= COYOTE_CREATION_PROBABILITY) {
+	                Coyote coyote = new Coyote(true,field,loc);
+	                actor.add(coyote);
+	                field.place(coyote, row, col);
+	            }
                 // else leave the location empty.
             }
         }
