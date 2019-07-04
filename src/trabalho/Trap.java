@@ -1,31 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho;
 
-import java.util.List;
+public class Trap extends Objeto{
 
-/**
- *
- * @author gabri
- */
-public class Trap implements Actor {
-
-    private boolean alive;
-
-    public boolean isExists() {
-        return alive;
-    }
-    
-    public void setAlive(boolean active){
-        this.alive = active;
-    }
-
-    @Override
-    public void act(Field updatedField,List<Actor> actors) {
-
+    public Trap(int row,int col){
+	    super(row,col); 
     }
 
 }
+    
+   
+   

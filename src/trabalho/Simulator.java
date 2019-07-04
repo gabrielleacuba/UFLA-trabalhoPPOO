@@ -38,6 +38,7 @@ public class Simulator {
     private AnimatedView view;
     //metodo a parte 
     private PopulateGeneration population;
+    
 
     /**
      * Construct a simulation field with default size.
@@ -63,6 +64,7 @@ public class Simulator {
         newAnimals = new ArrayList<>();
         field = new Field(depth, width);
         updatedField = new Field(depth, width);
+        //lake = new GenerateLake(field);
         population = new PopulateGeneration();
 
         // Create a view of the state of each location in the field.
@@ -70,6 +72,8 @@ public class Simulator {
         view.setColor(Fox.class, Color.green);
         view.setColor(Rabbit.class, Color.yellow);
         view.setColor(Coyote.class, Color.red);
+        view.setColor(Lake.class, Color.blue);
+        view.setColor(Trap.class, Color.black);
 
         // Setup a valid starting point.
         reset();
