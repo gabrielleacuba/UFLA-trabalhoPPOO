@@ -2,7 +2,7 @@ package trabalho;
 import java.util.List;
 import java.util.Random;
 
-public class Objeto implements Actor {
+public abstract class Objeto implements Actor {
 private static final Random rand = new Random();
     
     private int row;

@@ -85,7 +85,7 @@ public class Simulator {
      * e.g. 500 steps.
      */
     public void runLongSimulation() {
-        simulate(100);
+        simulate(0);
     }
 
     /**

@@ -20,8 +20,8 @@ public class PopulateGeneration {
         Random rand = new Random();
         field.clear();
         Lake lake;
-        int posLakeRow = rand.nextInt(50);
-        int posLakeCol = rand.nextInt(50);
+        int posLakeRow = rand.nextInt(field.getDepth()-10);
+        int posLakeCol = rand.nextInt(field.getWidth()-10);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 lake = new Lake(i+posLakeRow,j+posLakeCol);
