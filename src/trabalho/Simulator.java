@@ -11,8 +11,12 @@ import java.awt.Color;
  * A simple predator-prey simulator, based on a field containing rabbits and
  * foxes, coyotes, trees and a lake.
  *
+<<<<<<< HEAD
  * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus
  * Oliveira.
+=======
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+>>>>>>> 6260ed721a746340d7dde6c4c7eb1240c5d6d98f
  * @version 2.0
  */
 public class Simulator {
@@ -89,7 +93,10 @@ public class Simulator {
     /**
      * Run the simulation from its current state for the given number of steps.
      * Stop before the given number of steps if it ceases to be viable.
+<<<<<<< HEAD
      *
+=======
+>>>>>>> 6260ed721a746340d7dde6c4c7eb1240c5d6d98f
      * @param numsteps The number of steps the simulation will take.
      */
     public void simulate(int numSteps) {

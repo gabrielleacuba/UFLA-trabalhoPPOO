@@ -3,7 +3,12 @@ package trabalho;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * The class responsible for the coyotes we see in the field.
+ *
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
+ */
 public class Coyote extends Animal{
 
     // The age at which a fox can start to breed.
@@ -25,9 +30,15 @@ public class Coyote extends Animal{
     // The fox's age.
     private int age;
 
-    //Nivel alimentar da raposa que é aumentado comendo coelhos
+    //Food level of the coyote, that is increased eating foxes or rabbits.
     private int foodLevel;
     
+    /**
+     * 
+     * @param random Age Represents if it will born or just exist with a random age.
+     * @param field The main field where the actors are.
+     * @param location The location of the coyote in the field.
+     */
     public Coyote(boolean randomAge, Field field, Location location) {
     	super(randomAge,field,location);
         setAlive(true);
@@ -43,6 +54,7 @@ public class Coyote extends Animal{
     /**
      * This is what the fox does most of the time: it hunts for rabbits. In the
      * process, it might breed, die of hunger, or die of old age.
+     * @param updatedField The new field that is going to overplace the main field.
      */
     @Override
     public void act(Field updatedField, List<Actor> newCoyotes) {
@@ -67,7 +79,7 @@ public class Coyote extends Animal{
         }
     }
     /**
-     * Make this fox more hungry. This could result in the fox's death.
+     * Make this coyote more hungry. This could result in the coyote's death.
      */
     private void incrementHunger() {
         foodLevel--;
@@ -78,9 +90,9 @@ public class Coyote extends Animal{
     
 
     /**
-     * Tell the fox to look for rabbits adjacent to its current location.
+     * Tell the coyote to look for rabbits or foxes adjacent to its current location.
      *
-     * @param field The field in which it must look.
+     * @param field The main field where the actors are.
      * @param location Where in the field it is located.
      * @return Where food was found, or null if it wasn't.
      */ 
@@ -111,26 +123,42 @@ public class Coyote extends Animal{
     }
 
     
+    /**
+     * @return the coyote's breeding age.
+     */
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
     }
 
+    /**
+     * @return The coyote's max age.
+     */
     @Override
     protected int getMaxAge() {
         return MAX_AGE;
     }
 
+    /**
+     * @return The coyote's breeding probability.
+     */
     @Override
     protected double getBreedingProb() {
         return BREEDING_PROBABILITY;
     }
 
+    /**
+     * @return The coyote's max litter.
+     */
     @Override
     protected int getMaxLitter() {
         return MAX_LITTER_SIZE;
     }
     
+    /**
+     * @return the animal itself.
+     * @param exists If the rabbit exists or not.
+     */
     @Override
     protected Animal getAnimal(boolean exists) {
         Coyote coyote = new Coyote(false,getField(),getLocation());

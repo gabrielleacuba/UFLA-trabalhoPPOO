@@ -1,10 +1,10 @@
 package trabalho;
 
 /**
- * Represent a location in a rectangular grid.
+ * A class that represents the position on the field.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-09
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
  */
 public class Location {
 
@@ -25,6 +25,8 @@ public class Location {
 
     /**
      * Implement content equality.
+     * @param obj The actor that will be compared.
+     * @return If the the actors are equals or not.
      */
     public boolean equals(Actor obj) {
         if (obj instanceof Location) {
