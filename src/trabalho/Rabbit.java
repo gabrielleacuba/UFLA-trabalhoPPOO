@@ -6,8 +6,8 @@ import java.util.Random;
 /**
  * A simple model of a rabbit. Rabbits age, move, breed, and die.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-11
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
  */
 public class Rabbit extends Animal {
     // Characteristics shared by all rabbits (static fields).
@@ -28,7 +28,10 @@ public class Rabbit extends Animal {
      * or with a random age.
      *
      * @param randomAge If true, the rabbit will have a random age.
+     * @param field The main field where the actors are.
+     * @param location The location that rabbit is going to born.
      */
+
     public Rabbit(boolean randomAge, Field field, Location location) {
     	super(randomAge,field,location);
         setAlive(true);
@@ -36,8 +39,10 @@ public class Rabbit extends Animal {
     }
 
     /**
-     * This is what the rabbit does most of the time - it runs around. Sometimes
+     * This is what the rabbit does. Sometimes
      * it will breed or die of old age.
+     *@param updatedField The new field that is going to overplace the main field.
+     *@param newRabbits The list of newborn rabbits.
      */
     @Override
     public void act(Field updatedField, List<Actor> newRabbits) {
@@ -65,26 +70,42 @@ public class Rabbit extends Animal {
         setAlive(false);
     }
 
+    /**
+     * @return the Rabbit's breeding age.
+     */
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
     }
 
+    /**
+     * @return The Rabbit's max age.
+     */
     @Override
     protected int getMaxAge() {
         return MAX_AGE;
     }
 
+    /**
+     * @return The Rabbit's breeding probability.
+     */
     @Override
     protected double getBreedingProb() {
         return BREEDING_PROBABILITY;
     }
 
+    /**
+     * @return The Rabbit's max litter.
+     */
     @Override
     protected int getMaxLitter() {
         return MAX_LITTER_SIZE;
     }
     
+    /**
+     * @return the animal itself.
+     * @param exists If the rabbit exists or not.
+     */
     @Override
     protected Animal getAnimal(boolean exists) {
         Rabbit rabbit = new Rabbit(false,getField(),getLocation());

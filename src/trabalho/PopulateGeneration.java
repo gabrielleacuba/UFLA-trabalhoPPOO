@@ -3,7 +3,12 @@ package trabalho;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * This class is responsible for populate the initial field.
+ *
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
+ */
 public class PopulateGeneration {
 
     // The probability that a fox will be created in any given grid position.
@@ -14,7 +19,10 @@ public class PopulateGeneration {
     private static final double COYOTE_CREATION_PROBABILITY = 0.01;
 
     /**
-     * Populate the field with foxes and rabbits.
+     * Populate the field with the lake, trees, rabbits foxes and coyotes.
+     * @param field The main field where the actors are.
+     * @param actor A list with all actors in the field.
+     * 
      */
     public void populate(Field field, List<Actor> actor) {
         Random rand = new Random();
