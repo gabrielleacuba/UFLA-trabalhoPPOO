@@ -29,7 +29,6 @@ public class Fox extends Animal {
 
     // Individual characteristics (instance fields).
     // The fox's age.
-    
     private int foodLevel;
 
     /**
@@ -39,7 +38,7 @@ public class Fox extends Animal {
      * @param randomAge If true, the fox will have random age and hunger level.
      */
     public Fox(boolean randomAge, Field field, Location location) {
-    	super(randomAge,field,location);
+        super(randomAge, field, location);
         setAlive(true);
         if (randomAge) {
             randomAge(randomAge);
@@ -59,11 +58,12 @@ public class Fox extends Animal {
         incrementAge();
         incrementHunger();
         Field field = getField();
+        
         if (isExists()) {
             giveBirth(newFoxes);
             // Move towards the source of food if found.
             Location newLocation = findFood(field, getLocation());
-            
+
             if (newLocation == null) {  // no food found - move randomly
                 newLocation = updatedField.freeAdjacentLocation(getLocation());
             }
@@ -95,8 +95,8 @@ public class Fox extends Animal {
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood(Field field, Location location) {
-    	List<Location> adjacent = field.adjacentLocations(location);
-        Iterator<Location> it= adjacent.iterator();
+        List<Location> adjacent = field.adjacentLocations(location);
+        Iterator<Location> it = adjacent.iterator();
         while (it.hasNext()) {
             Location where = (Location) it.next();
             Actor actors = field.getObjectAt(where);
@@ -115,12 +115,12 @@ public class Fox extends Animal {
     public void setEaten() {
         setAlive(false);
     }
+
     /**
      * Generate a number representing the number of births, if it can breed.
      *
      * @return The number of births (may be zero).
      */
-
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
@@ -140,13 +140,11 @@ public class Fox extends Animal {
     protected int getMaxLitter() {
         return MAX_LITTER_SIZE;
     }
-    
+
     @Override
     protected Animal getAnimal(boolean exists) {
-        Fox fox = new Fox(false,getField(),getLocation());
+        Fox fox = new Fox(false, getField(), getLocation());
         return fox;
     }
-    
+
 }
-
-
