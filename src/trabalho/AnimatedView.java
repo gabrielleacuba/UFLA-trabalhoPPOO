@@ -11,8 +11,8 @@ import java.util.HashMap;
  * background color. Colors for each type of species can be defined using the
  * setColor method.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-23
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
  */
 public class AnimatedView extends JFrame implements SimulatorViewNew{
 

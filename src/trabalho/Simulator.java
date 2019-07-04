@@ -9,10 +9,11 @@ import java.awt.Color;
 
 /**
  * A simple predator-prey simulator, based on a field containing rabbits and
- * foxes.
+ * foxes, coyotes, trees and a lake.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-09
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus
+ * Oliveira.
+ * @version 2.0
  */
 public class Simulator {
 
@@ -23,9 +24,9 @@ public class Simulator {
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 100;
 
-    // The list of animals in the field
+    // The list of actors in the field
     private List<Actor> actors;
-    // The list of animals just born
+    // The list of actors just born
     private List<Actor> newActors;
     // The current state of the field.
     private Field field;
@@ -35,7 +36,7 @@ public class Simulator {
     private int step;
     // A graphical view of the simulation.
     private AnimatedView view;
-    //metodo a parte 
+    //Initial population.
     private PopulateGeneration population;
 
     /**
@@ -62,7 +63,6 @@ public class Simulator {
         newActors = new ArrayList<>();
         field = new Field(depth, width);
         updatedField = new Field(depth, width);
-        //lake = new GenerateLake(field);
         population = new PopulateGeneration();
 
         // Create a view of the state of each location in the field.
@@ -80,7 +80,7 @@ public class Simulator {
 
     /**
      * Run the simulation from its current state for a reasonably long period,
-     * e.g. 500 steps.
+     * e.g. 50 steps.
      */
     public void runLongSimulation() {
         simulate(50);
@@ -89,6 +89,8 @@ public class Simulator {
     /**
      * Run the simulation from its current state for the given number of steps.
      * Stop before the given number of steps if it ceases to be viable.
+     *
+     * @param numsteps The number of steps the simulation will take.
      */
     public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps && view.isViable(field); step++) {

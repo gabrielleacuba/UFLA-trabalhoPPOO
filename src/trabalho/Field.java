@@ -10,8 +10,8 @@ import java.util.Random;
  * Represent a rectangular grid of field positions. Each position is able to
  * store a single animal.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-09
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
  */
 public class Field {
 
@@ -159,14 +159,6 @@ public class Field {
     }
 
 
-    /**
-     * Generate an iterator over a shuffled list of locations adjacent to the
-     * given one. The list will not include the location itself. All locations
-     * will lie within the grid.
-     *
-     * @param location The location from which to generate adjacencies.
-     * @return An iterator over locations adjacent to that given.
-     */
     /**
      * Return a shuffled list of locations adjacent to the given one.
      * The list will not include the location itself.

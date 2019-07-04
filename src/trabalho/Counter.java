@@ -7,8 +7,9 @@ import java.awt.Color;
  * identifying string and a count of how many participants of this type
  * currently exist within the simulation.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-23
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus
+ * Oliveira.
+ * @version 2.0
  */
 public class Counter {
 

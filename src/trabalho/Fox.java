@@ -7,8 +7,8 @@ import java.util.Random;
 /**
  * A simple model of a fox. Foxes age, move, eat rabbits, and die.
  *
- * @author David J. Barnes and Michael Kolling
- * @version 2002-04-11
+ * @author Gabrielle Almeida, Luís Felype Fioravanti Ferreira and Matheus Oliveira.
+ * @version 2.0
  */
 public class Fox extends Animal {
     // Characteristics shared by all foxes (static fields).
@@ -111,38 +111,53 @@ public class Fox extends Animal {
         }
         return null;
     }
-
+    
+    /**
+     * Tell the fox that it's dead now :(
+     */
     public void setEaten() {
         setAlive(false);
     }
 
     /**
-     * Generate a number representing the number of births, if it can breed.
-     *
-     * @return The number of births (may be zero).
+     * 
+     * @return The animal Bredding age.
      */
     @Override
     protected int getBreedingAge() {
         return BREEDING_AGE;
     }
-
+    /**
+     * 
+     * @return The animal Max age .
+     */
     @Override
     protected int getMaxAge() {
         return MAX_AGE;
     }
-
+    /**
+     * 
+     * @return The animal Breeding Probality.
+     */
     @Override
     protected double getBreedingProb() {
         return BREEDING_PROBABILITY;
     }
-
+    /**
+     * 
+     * @return The animal Max Litter.
+     */
     @Override
     protected int getMaxLitter() {
         return MAX_LITTER_SIZE;
     }
-
+    /**
+     * 
+     * @param alive Whether the fox is alive or not.
+     * @return  The Animal it self
+     */
     @Override
-    protected Animal getAnimal(boolean exists) {
+    protected Animal getAnimal(boolean alive) {
         Fox fox = new Fox(false, getField(), getLocation());
         return fox;
     }
